@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from "../Login";
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Profile from "../views/Profile";
+import Login from "../views/Login";
+import Home from '../views/categories/Home.vue'
+import About from '../views/categories/About.vue'
+import Profile from "../views/categories/Profile";
+import Categories from "../views/Categories";
+import Category from "../views/categories/Category";
+import Register from "../views/Register"
 
 Vue.use(VueRouter)
 
@@ -18,19 +21,36 @@ const routes = [
     component: Login
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile
+    path: '/categories',
+    name: 'Categories',
+    component: Categories,
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/category',
+        name: 'Category',
+        component: Category
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: About
+      },
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
+      }
+    ]
   }
 ]
 
