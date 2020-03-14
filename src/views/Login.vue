@@ -13,8 +13,8 @@
       </el-form-item>
 
       <el-form-item class="login-button">
-        <el-button type="primary" @click='sub'>登录</el-button>
-        <el-button type="primary" @click='register'>注册</el-button>
+        <el-button type="primary" @click='doLogin'>登录</el-button>
+        <el-button type="primary" @click='toRegister'>注册</el-button>
       </el-form-item>
 
     </el-form>
@@ -28,18 +28,20 @@
     data() {
       return {
         loginForm: {
-          username: '123123',
+          username: '',
           password: '',
         }
       }
     },
     methods: {
-      sub() {
+      doLogin() {
+        //验证登录，成功 保存token 跳转
+        //          失败 弹出错误信息
         this.$router.replace({
           name: "About"
         })
       },
-      register() {
+      toRegister() {
         this.$router.replace({
           name: "Register"
         })
@@ -48,6 +50,9 @@
   };
 </script>
 <style scoped>
+  #login {
+    margin: auto 0;
+  }
   h2 {
     text-align: center;
   }
