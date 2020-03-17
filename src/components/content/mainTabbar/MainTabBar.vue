@@ -1,7 +1,8 @@
 <template>
   <tab-bar>
     <tab-bar-item link="/home">
-      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
+      <i slot="icon" class="el-icon-edit"></i>
+<!--      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">-->
       <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
       <div slot="text">首页</div>
     </tab-bar-item>
@@ -35,4 +36,10 @@
 </script>
 
 <style scoped>
+  i {
+    width: 24px;
+    height: 24px;
+    margin-top: 5px;
+    vertical-align: middle;
+  }
 </style>

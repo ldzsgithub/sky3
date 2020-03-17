@@ -23,6 +23,8 @@
 </template>
 
 <script>
+  import {doLogin} from "../network/login";
+
   export default {
     name: "login",
     data() {
@@ -35,10 +37,15 @@
     },
     methods: {
       doLogin() {
-        //验证登录，成功 保存token 跳转
-        //          失败 弹出错误信息
-        this.$router.replace({
-          name: "About"
+        doLogin(this.loginForm).then(res => {
+          if(res.data.state == 0) {
+            this.$store.commit('setToken', {token : res.data.data, user : this.loginForm.username});
+            this.$router.replace({
+              name: "About"
+            })
+          } else {
+            this.$message(res.data.msg);
+          }
         })
       },
       toRegister() {

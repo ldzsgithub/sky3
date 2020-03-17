@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     关于
+    <h1>1212{{$store.state.token}}</h1>
     <i class="el-icon-edit"></i>
     <i class="el-icon-share"></i>
     <i class="el-icon-delete"></i>

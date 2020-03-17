@@ -1,5 +1,11 @@
-import {request} from "./request";
+import {requestDefault} from "./request";
 
-export function f() {
-
+export function doLogin(loginForm) {
+  return requestDefault({
+    url: "/user/login",
+    params: {
+      username: loginForm.username,
+      password: loginForm.password,
+    }
+  })
 }

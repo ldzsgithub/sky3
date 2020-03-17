@@ -22,7 +22,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* 利用flex进行布局 */
+    /* flex布局 */
     display: flex;
     text-align: center;
   }
