@@ -1,25 +1,24 @@
 <template>
   <tab-bar>
     <tab-bar-item link="/home">
-      <i slot="icon" class="el-icon-edit"></i>
-<!--      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">-->
+      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
       <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
       <div slot="text">首页</div>
     </tab-bar-item>
     <tab-bar-item link="/category">
-      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
-      <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
-      <div slot="text">分类</div>
+      <img slot="icon" src="~assets/img/tabbar/grid.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/grid_active.svg" alt="">
+      <div slot="text">实时数据</div>
     </tab-bar-item>
     <tab-bar-item link="/about">
-      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
-      <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
-      <div slot="text">管理</div>
+      <img slot="icon" src="~assets/img/tabbar/chart.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/chart_active.svg" alt="">
+      <div slot="text">历史数据</div>
     </tab-bar-item>
     <tab-bar-item link="/profile">
-      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
-      <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
-      <div slot="text">我的</div>
+      <img slot="icon" src="~assets/img/tabbar/person.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/person_active.svg" alt="">
+      <div slot="text">个人中心</div>
     </tab-bar-item>
   </tab-bar>
 </template>
@@ -34,12 +33,3 @@
     }
   }
 </script>
-
-<style scoped>
-  i {
-    width: 24px;
-    height: 24px;
-    margin-top: 5px;
-    vertical-align: middle;
-  }
-</style>

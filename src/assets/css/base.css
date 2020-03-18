@@ -2,8 +2,7 @@
 
 :root {
   --color-text: #666;
-  --color-high-text: #ff5777;
-  --color-tint: #ff8198;
+  --color-high: #00e;
   --color-background: #fff;
   --font-size: 14px;
   --line-height: 1.5;
@@ -41,6 +40,11 @@ a {
   visibility: hidden;
 }
 
+ul, li {
+  padding:0;
+  margin:0;
+  list-style:none
+}
 .clear-fix {
   zoom: 1;
 }
