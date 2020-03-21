@@ -13,17 +13,18 @@
       </li>
       <li>
         <i class="el-icon-s-tools"></i>
-        <router-link to="#">首页</router-link>
+        <router-link to="/categories/profile/updatePassword">修改密码</router-link>
       </li>
       <li>
         <i class="el-icon-s-tools"></i>
-        <router-link to="#">修改密码</router-link>
+        <router-link to="#">首页</router-link>
       </li>
       <li>
         <i class="el-icon-s-tools"></i>
         <router-link to="/login">退出登录</router-link>
       </li>
     </ul>
+    <router-view></router-view>
   </div>
 </template>
 

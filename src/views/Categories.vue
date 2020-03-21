@@ -1,5 +1,5 @@
 <template>
-  <div id="tabbar">
+  <div id="categories">
     <router-view></router-view>
     <main-tab-bar></main-tab-bar>
   </div>
@@ -9,7 +9,7 @@
   import MainTabBar from 'content/mainTabbar/MainTabBar'
 
   export default {
-    name: 'app',
+    name: 'categories',
     components: {
       MainTabBar,
     },

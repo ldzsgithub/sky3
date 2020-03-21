@@ -4,6 +4,7 @@ import Login from "../views/Login";
 import Home from '../views/categories/Home.vue'
 import History from '../views/categories/History.vue'
 import Profile from "../views/categories/Profile";
+import ProfileUpdatePassword from "../views/categories/ProfileUpdatePassword";
 import Categories from "../views/Categories";
 import Category from "../views/categories/Category";
 import Register from "../views/Register"
@@ -48,7 +49,14 @@ const routes = [
       {
         path: 'profile',
         name: 'Profile',
-        component: Profile
+        component: Profile,
+        children: [
+          {
+            path: 'updatePassword',
+            name: ProfileUpdatePassword,
+            component: ProfileUpdatePassword
+          }
+        ]
       }
     ]
   }
