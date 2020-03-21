@@ -1,9 +1,5 @@
 <template>
   <div id="tabbar">
-    <router-link to="/categories/home"></router-link>
-    <router-link to="/categories/Category"></router-link>
-    <router-link to="/categories/about"></router-link>
-    <router-link to="/categories/profile"></router-link>
     <router-view></router-view>
     <main-tab-bar></main-tab-bar>
   </div>
@@ -16,6 +12,9 @@
     name: 'app',
     components: {
       MainTabBar,
+    },
+    mounted() {
+      this.$router.replace("/categories/home");
     }
   }
 </script>

@@ -31,22 +31,22 @@ const routes = [
     component: Categories,
     children: [
       {
-        path: '/home',
+        path: 'home',
         name: 'Home',
         component: Home
       },
       {
-        path: '/category',
+        path: 'category',
         name: 'Category',
         component: Category
       },
       {
-        path: '/history',
+        path: 'history',
         name: 'History',
         component: History
       },
       {
-        path: '/profile',
+        path: 'profile',
         name: 'Profile',
         component: Profile
       }
