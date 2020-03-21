@@ -41,7 +41,7 @@
           if(res.data.state == 0) {
             this.$store.commit('setToken', {token : res.data.data, user : this.loginForm.username});
             this.$router.replace({
-              name: "About"
+              name: "History"
             })
           } else {
             this.$message(res.data.msg);

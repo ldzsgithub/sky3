@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from "../views/Login";
 import Home from '../views/categories/Home.vue'
-import About from '../views/categories/About.vue'
+import History from '../views/categories/History.vue'
 import Profile from "../views/categories/Profile";
 import Categories from "../views/Categories";
 import Category from "../views/categories/Category";
@@ -41,9 +41,9 @@ const routes = [
         component: Category
       },
       {
-        path: '/about',
-        name: 'About',
-        component: About
+        path: '/history',
+        name: 'History',
+        component: History
       },
       {
         path: '/profile',
