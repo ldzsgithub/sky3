@@ -14,7 +14,9 @@
 
       <el-form-item class="login-button">
         <el-button type="primary" @click='doLogin'>登录</el-button>
-        <el-button type="primary" @click='toRegister'>注册</el-button>
+        <el-button type="primary">
+          <router-link to="/register">注册</router-link>
+        </el-button>
       </el-form-item>
 
     </el-form>
@@ -46,11 +48,6 @@
           } else {
             this.$message(res.data.msg);
           }
-        })
-      },
-      toRegister() {
-        this.$router.replace({
-          name: "Register"
         })
       }
     }

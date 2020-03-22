@@ -50,13 +50,11 @@ const routes = [
         path: 'profile',
         name: 'Profile',
         component: Profile,
-        children: [
-          {
-            path: 'updatePassword',
-            name: ProfileUpdatePassword,
-            component: ProfileUpdatePassword
-          }
-        ]
+      },
+      {
+        path: 'profile/updatePassword',
+        name: ProfileUpdatePassword,
+        component: ProfileUpdatePassword
       }
     ]
   }

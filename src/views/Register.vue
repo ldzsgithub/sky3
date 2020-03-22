@@ -22,7 +22,9 @@
 
       <el-form-item class="center-button">
         <el-button type="primary" @click='doRegister'>注册</el-button>
-        <el-button type="primary" @click='toLogin'>返回</el-button>
+        <el-button type="primary">
+          <router-link to="/login">返回</router-link>
+        </el-button>
       </el-form-item>
 
     </el-form>
@@ -46,11 +48,6 @@
     components: {
     },
     methods: {
-      toLogin() {
-        this.$router.replace({
-          name: "Login"
-        })
-      },
       doRegister() {
         if(this.registerForm.username.trim() == '') {
           this.$message('请输入用户名');
