@@ -1,6 +1,10 @@
 <template>
   <div class="Category">
-    CategoryCategoryCategoryCategory
+    <van-row type="flex">
+      <van-col span="6">span: 6</van-col>
+      <van-col span="6">span: 6</van-col>
+
+    </van-row>
   </div>
 </template>
 
@@ -10,5 +14,5 @@
     name: 'Category',
     components: {
     }
-  }
+  };
 </script>

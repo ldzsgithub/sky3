@@ -1,12 +1,12 @@
 import {requestDefault} from "./request";
 
-export function doRegister(registerForm) {
+export function doRegister(username, password, phoneNumber) {
   return requestDefault({
     url: "/user/register",
     params: {
-      username: registerForm.username,
-      password: registerForm.password,
-      phoneNumber: registerForm.phoneNumber
+      username: username,
+      password: password,
+      phoneNumber: phoneNumber
     }
   })
 }

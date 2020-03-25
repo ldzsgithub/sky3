@@ -1,11 +1,11 @@
 import {requestDefault} from "./request";
 
-export function doLogin(loginForm) {
+export function doLogin(username, password) {
   return requestDefault({
     url: "/user/login",
     params: {
-      username: loginForm.username,
-      password: loginForm.password,
+      username: username,
+      password: password,
     }
   })
 }

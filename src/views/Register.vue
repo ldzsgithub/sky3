@@ -1,33 +1,52 @@
 <template>
   <div class="register">
-    <el-form :model="registerForm">
+    <h2>注册</h2>
 
-      <h2>注册</h2>
+    <van-form @submit="doRegister">
+      <van-field
+        v-model="username"
+        name="用户名"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="password"
+        type="password"
+        name="密码"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <van-field
+        v-model="repassword"
+        type="repassword"
+        name="密码"
+        label="密码"
+        placeholder="确认密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <van-field
+        v-model="phoneNumber"
+        name="手机号码"
+        label="手机号码"
+        placeholder="手机号码"
+        :rules="[{ required: true, message: '请填写电话号' }]"
+      />
+      <div class="but">
+        <van-button round block type="info" native-type="submit">
+          注册
+        </van-button>
+      </div>
+      <div class="but">
+        <router-link to="/login">
+          <van-button round block type="info">
+            返回
+          </van-button>
+        </router-link>
+      </div>
+    </van-form>
 
-      <el-form-item>
-        <el-input v-model="registerForm.username" name="username" placeholder="请输入用户名"></el-input>
-      </el-form-item>
-
-      <el-form-item>
-        <el-input v-model="registerForm.password" name="password" placeholder="请输入密码"></el-input>
-      </el-form-item>
-
-      <el-form-item>
-        <el-input v-model="registerForm.repassword" name="repassword" placeholder="请确认密码"></el-input>
-      </el-form-item>
-
-      <el-form-item>
-        <el-input v-model="registerForm.phoneNumber" name="phoneNumber" placeholder="手机号码"></el-input>
-      </el-form-item>
-
-      <el-form-item class="center-button">
-        <el-button type="primary" @click='doRegister'>注册</el-button>
-        <el-button type="primary">
-          <router-link to="/login">返回</router-link>
-        </el-button>
-      </el-form-item>
-
-    </el-form>
   </div>
 </template>
 
@@ -38,27 +57,22 @@
     name: 'Register',
     data() {
       return {
-        registerForm: {
-          username: '',
-          password: '',
-          repassword: ''
-        }
+        username: '',
+        password: '',
+        repassword: '',
+        phoneNumber: ''
       }
     },
     components: {
     },
     methods: {
       doRegister() {
-        if(this.registerForm.username.trim() == '') {
-          this.$message('请输入用户名');
+        if(this.password.trim() == '') {
+          this.$toast.fail('请输入密码');
           return false;
         }
-        if(this.registerForm.password.trim() == '') {
-          this.$message('请输入密码');
-          return false;
-        }
-        if(this.registerForm.repassword.trim() == '') {
-          this.$message('请输入密码');
+        if(this.repassword.trim() == '') {
+          this.$toast.fail('请输入密码');
           return false;
         }
         // if(this.registerForm.password = this.registerForm.repassword) {
@@ -69,14 +83,12 @@
         //   this.$message('请输入电话号码');
         //   return false;
         // }
-        doRegister(this.registerForm).then(res => {
+        doRegister(this.username, this.password, this.phoneNumber).then(res => {
           if(res.data.state == 0) {
-            this.$message(res.data.msg);
-            this.$router.replace({
-              name: "Login"
-            })
+            this.$toast.success(res.data.msg);
+            this.$router.replace('/login')
           } else {
-            this.$message(res.data.msg);
+            this.$toast.fail(res.data.msg);
           }
         })
       }
@@ -88,8 +100,7 @@
   h2 {
     text-align: center;
   }
-  .center-button {
-    text-align:center;
-    margin: 0 auto;
+  .but {
+    margin: 20px;
   }
 </style>

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="header">
       <div class="wrapper">
-        <el-avatar :size="100">{{$store.state.user}}</el-avatar>
+        <b>{{$store.state.user}}</b>
         <b>兰大中{{$store.state.user}}</b>
       </div>
     </div>

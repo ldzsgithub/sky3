@@ -1,26 +1,35 @@
 <template>
   <div id="login">
-    <el-form :model="loginForm">
-
-      <h2>登录</h2>
-
-      <el-form-item>
-        <el-input v-model="loginForm.username" name="username" placeholder="请输入用户名"></el-input>
-      </el-form-item>
-
-      <el-form-item>
-        <el-input v-model="loginForm.password" name="password" placeholder="请输入密码"></el-input>
-      </el-form-item>
-
-      <el-form-item class="login-button">
-        <el-button type="primary" @click='doLogin'>登录</el-button>
-        <el-button type="primary">
-          <router-link to="/register">注册</router-link>
-        </el-button>
-      </el-form-item>
-
-    </el-form>
-
+    <h2>登录</h2>
+    <van-form @submit="doLogin">
+      <van-field
+        v-model="username"
+        name="用户名"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="password"
+        type="password"
+        name="密码"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <div class="but">
+        <van-button round block type="info" native-type="submit">
+          登录
+        </van-button>
+      </div>
+    </van-form>
+    <div class="but">
+      <router-link to="/register">
+        <van-button round block type="info">
+          注册
+        </van-button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -31,22 +40,20 @@
     name: "login",
     data() {
       return {
-        loginForm: {
-          username: '',
-          password: '',
-        }
+        username: '',
+        password: '',
       }
     },
     methods: {
       doLogin() {
-        doLogin(this.loginForm).then(res => {
+        doLogin(this.username, this.password).then(res => {
           if(res.data.state == 0) {
-            this.$store.commit('setToken', {token : res.data.data, user : this.loginForm.username});
+            this.$store.commit('setToken', {token : res.data.data, user : this.username});
             this.$router.replace({
               name: "Categories"
             })
           } else {
-            this.$message(res.data.msg);
+            //this.$message(res.data.msg);
           }
         })
       }
@@ -54,14 +61,10 @@
   };
 </script>
 <style scoped>
-  #login {
-    margin: auto 0;
-  }
   h2 {
     text-align: center;
   }
-  .login-button {
-    text-align:center;
-    margin: 0 auto;
+  .but {
+    margin: 20px;
   }
 </style>
