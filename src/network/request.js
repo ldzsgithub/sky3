@@ -9,6 +9,8 @@ export function requestDefault(config) {
   return instance(config)
 }
 
+
+/*携带token*/
 export function request(config) {
   const instance = axios.create({
     baseURL: baseURl,

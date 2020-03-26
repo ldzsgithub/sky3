@@ -1,48 +1,9 @@
 <template>
   <div class="realTimeList">
 
-    <div id="wrapper" v-for="">
+    <div id="wrapper" v-for="item in items">
       <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/low_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/high_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
-      </div>
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{text | ellipsis}} </p><p> {{text | ellipsis}} </p>
+        <p> {{item.probeName | ellipsis}} </p><p> {{item.probe | ellipsis}} </p>
       </div>
     </div>
   </div>
