@@ -3,7 +3,7 @@
     <div class="header">
       <div class="wrapper">
         <b>{{$store.state.user}}</b>
-        <b>兰大中{{$store.state.user}}</b>
+        <b>{{$store.state.user}}</b>
       </div>
     </div>
     <div class="content">

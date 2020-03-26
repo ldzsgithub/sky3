@@ -40,8 +40,8 @@
     name: "login",
     data() {
       return {
-        username: '',
-        password: '',
+        username: '兰大中',
+        password: '1',
       }
     },
     methods: {

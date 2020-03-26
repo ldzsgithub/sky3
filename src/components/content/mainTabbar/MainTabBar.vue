@@ -5,7 +5,7 @@
       <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
       <div slot="text">首页</div>
     </tab-bar-item>
-    <tab-bar-item link="/categories/category">
+    <tab-bar-item link="/categories/realTime">
       <img slot="icon" src="~assets/img/tabbar/grid.svg" alt="">
       <img slot="active-icon" src="~assets/img/tabbar/grid_active.svg" alt="">
       <div slot="text">实时数据</div>
