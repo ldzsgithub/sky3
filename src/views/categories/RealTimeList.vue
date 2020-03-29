@@ -1,29 +1,30 @@
 <template>
-  <div class="realTimeList">
+  <div id="real-time-list" class="realTimeList">
 
-    <div id="wrapper" v-for="item in items">
-      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">
-        <p> {{item.probeName | ellipsis}} </p><p> {{item.probe | ellipsis}} </p>
-      </div>
-    </div>
+<!--    <div id="wrapper" v-for="item in items">-->
+<!--      <div class="item"><img src="~assets/img/alarm/no_alarm.png" alt="">-->
+<!--        <p> {{item.probeName | ellipsis}} </p><p> {{item.probe | ellipsis}} </p>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
+
+  import {selectByHostId} from "../../network/categories/realTimeList";
 
   export default {
     name: 'RealTimeList',
     components: {},
     data() {
       return {
-        hostId: this.$route.query.hostId,
-
+        items: []
       }
     },
+    created() {
+    },
     methods: {
-      f() {
-        alert(this.$route.query.hostId)
-      }
+
     },
     filters: {
       ellipsis: function (value) {

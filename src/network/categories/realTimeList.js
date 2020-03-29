@@ -1,11 +1,19 @@
-import {request, requestDefault} from "../request";
+import {request} from "../request";
 
-export function doLogin(username, password) {
-  return requestDefault({
+export function selectByHostId(hostId) {
+  return request({
+    url: "/alarm/selectByHostId",
+    params: {
+      hostId: hostId
+    }
+  })
+}
+
+export function selectOrg(hostId) {
+  return request({
     url: "/org",
     params: {
-      username: username,
-      password: password,
+      hostId: hostId
     }
   })
 }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import vuex from '../store/index'
 
 const baseURl = 'http://localhost:25275/';
 
@@ -15,13 +16,14 @@ export function request(config) {
   const instance = axios.create({
     baseURL: baseURl,
     headers: {
-      jwt: $store.state.token,
-      user: $store.state.user
+      jwt: vuex.state.token,
+      user: vuex.state.user
     }
   })
   instance.interceptors.request.use(config => {
-    if($store.state.token == '') {
-
+    if(vuex.state.token == '') {
+      console.log("token为空");
+      return false;
     }
     return config;
   }, err => {

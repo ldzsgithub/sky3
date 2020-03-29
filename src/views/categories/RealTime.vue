@@ -4,14 +4,20 @@
       <van-dropdown-item v-model="dept" :options="deptOption" />
       <van-dropdown-item v-model="host" :options="hostOption" @change="f()"/>
     </van-dropdown-menu>
-    <router-view></router-view>
+    <real-time-list ref="realTimeList"></real-time-list>
   </div>
 </template>
 
 <script>
 
+  import {selectByHostId} from "../../network/categories/realTimeList";
+  import RealTimeList from "./RealTimeList";
+
   export default {
     name: 'RealTime',
+    components: {
+      RealTimeList
+    },
     data() {
       return {
         dept: 1,
@@ -22,14 +28,27 @@
         ],
         hostOption: [
           {text: '全部', value: 0},
-          {text: '主机一号', value: 'b'},
-          {text: '主机二号', value: 'c'},
+          {text: '主机一号', value: 1},
+          {text: '主机二号', value: 2},
         ]
       }
     },
+    mounted() {
+      this.selectOrg();
+      this.selectByHostId();
+    },
     methods: {
-      f() {
-        this.$router.replace({path: "/categories/realTime/realTimeList", query: {hostId: this.host}}).catch(err => err);
+      selectOrg() {
+
+      },
+      selectByHostId() {
+        selectByHostId(0).then(res => {
+          if(res.data.state == 0) {
+            console.log(res.data)
+          } else {
+            console.log(123)
+          }
+        })
       }
     }
   };

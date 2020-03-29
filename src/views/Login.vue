@@ -35,6 +35,7 @@
 
 <script>
   import {doLogin} from "../network/login";
+  import {charToUnicode} from "../common/utils";
 
   export default {
     name: "login",
@@ -48,7 +49,7 @@
       doLogin() {
         doLogin(this.username, this.password).then(res => {
           if(res.data.state == 0) {
-            this.$store.commit('setToken', {token : res.data.data, user : this.username});
+            this.$store.commit('setToken', {token : res.data.data, user : charToUnicode(this.username)});
             this.$router.replace({
               name: "Categories"
             })
