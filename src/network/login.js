@@ -1,4 +1,4 @@
-import {requestDefault} from "./request";
+import {request, requestDefault} from "./request";
 
 export function doLogin(username, password) {
   return requestDefault({
@@ -6,6 +6,15 @@ export function doLogin(username, password) {
     params: {
       username: username,
       password: password,
+    }
+  })
+}
+
+export function selectOrg(hostId) {
+  return request({
+    url: "/org",
+    params: {
+      hostId: hostId
     }
   })
 }

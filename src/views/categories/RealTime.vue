@@ -2,7 +2,7 @@
   <div class="RealTime">
     <van-dropdown-menu>
       <van-dropdown-item v-model="dept" :options="deptOption" />
-      <van-dropdown-item v-model="host" :options="hostOption" @change="f()"/>
+      <van-dropdown-item v-model="host" :options="hostOption" @change="selectByHostId()"/>
     </van-dropdown-menu>
     <real-time-list ref="realTimeList"></real-time-list>
   </div>
@@ -34,12 +34,12 @@
       }
     },
     mounted() {
-      this.selectOrg();
+      this.setOption();
       this.selectByHostId();
     },
     methods: {
-      selectOrg() {
-
+      setOption() {
+        console.log("org*")
       },
       selectByHostId() {
         selectByHostId(0).then(res => {

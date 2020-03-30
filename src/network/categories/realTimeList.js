@@ -8,12 +8,3 @@ export function selectByHostId(hostId) {
     }
   })
 }
-
-export function selectOrg(hostId) {
-  return request({
-    url: "/org",
-    params: {
-      hostId: hostId
-    }
-  })
-}

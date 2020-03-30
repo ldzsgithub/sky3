@@ -34,7 +34,7 @@
 </template>
 
 <script>
-  import {doLogin} from "../network/login";
+  import {doLogin, selectOrg} from "../network/login";
   import {charToUnicode} from "../common/utils";
 
   export default {
@@ -54,7 +54,15 @@
               name: "Categories"
             })
           } else {
-            //this.$message(res.data.msg);
+            //失败提示
+          }
+        })
+        //查询org
+        selectOrg().then(res => {
+          if(res.data.state == 0) {
+            this.$store.commit('setOrg', {org : res.data.data})
+          } else {
+            //当前用户没有权限
           }
         })
       }
