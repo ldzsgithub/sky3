@@ -10,11 +10,11 @@ export function doLogin(username, password) {
   })
 }
 
-export function selectOrg(hostId) {
+export function selectOrg(username) {
   return request({
-    url: "/org",
+    url: "/org/get",
     params: {
-      hostId: hostId
+      username: username
     }
   })
 }

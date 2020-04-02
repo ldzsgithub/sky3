@@ -7,15 +7,15 @@ export default new Vuex.Store({
   state: {
     token: '',
     user: '',
-    org: []
+    org: ''
   },
   mutations: {
     setToken(state, payload) {
-      state.token = payload.token;
-      state.user = payload.user;
+      this.state.token = payload.token;
+      this.state.user = payload.user;
     },
     setOrg(state, payload) {
-      state.org = payload.org;
+      this.state.org = payload.org;
     }
   },
   actions: {
@@ -27,5 +27,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
   }
 })

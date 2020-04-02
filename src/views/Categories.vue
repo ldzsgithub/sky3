@@ -14,7 +14,7 @@
       MainTabBar,
     },
     mounted() {
-      this.$router.replace("/categories/home");
+      this.$router.replace("/categories/home").catch(err => {});
     }
   }
 </script>

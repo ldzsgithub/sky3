@@ -23,7 +23,7 @@ export function request(config) {
   instance.interceptors.request.use(config => {
     if(vuex.state.token == '') {
       console.log("token为空");
-      return false;
+      return null;
     }
     return config;
   }, err => {
