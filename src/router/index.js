@@ -7,7 +7,6 @@ import Profile from "../views/categories/Profile";
 import ProfileUpdatePassword from "../views/categories/ProfileUpdatePassword";
 import Categories from "../views/Categories";
 import RealTime from "../views/categories/RealTime";
-import RealTimeList from "../views/categories/RealTimeList";
 import Register from "../views/Register"
 
 Vue.use(VueRouter)
@@ -41,13 +40,6 @@ const routes = [
         path: 'realTime',
         name: 'RealTime',
         component: RealTime,
-        children: [
-          {
-            path: 'realTimelist/:hostId?',
-            name: 'RealTimeList',
-            component: RealTimeList
-          }
-        ]
       },
       {
         path: 'history',

@@ -52,28 +52,25 @@
             this.$store.commit('setToken', {token : res.data.data, user : charToUnicode(this.username)});
             this.$router.replace("/categories")
             //org
+            this.sOrg();
+            clearInterval();
             setInterval( () => {
-              selectOrg().then(org => {
-                if(org.data.state == 0) {
-                  this.$store.commit('setOrg', {org : org.data.data});
-                } else {
-                  console.log("org失败")
-                  //当前用户没有权限
-                }
-              })
+              this.sOrg();
             },5000)
-
           } else {
             //失败提示
           }
         })
-
-
-        //查询org
-
       },
       sOrg() {
-
+        selectOrg().then(org => {
+          if(org.data.state == 0) {
+            this.$store.commit('setOrg', {org : org.data.data});
+          } else {
+            console.log("org失败")
+            //当前用户没有权限
+          }
+        })
       }
     }
   };
