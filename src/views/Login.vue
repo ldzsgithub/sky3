@@ -36,7 +36,6 @@
 <script>
   import {doLogin, selectOrg} from "../network/login";
   import {charToUnicode} from "../common/utils";
-  import vuex from '../store/index'
 
   export default {
     name: "login",
@@ -53,15 +52,17 @@
             this.$store.commit('setToken', {token : res.data.data, user : charToUnicode(this.username)});
             this.$router.replace("/categories")
             //org
-            selectOrg().then(org => {
-              if(org.data.state == 0) {
-                this.$store.commit('setOrg', {org : org.data.data});
-                console.log(org.data.data)
-              } else {
-                console.log("org失败")
-                //当前用户没有权限
-              }
-            })
+            setInterval( () => {
+              selectOrg().then(org => {
+                if(org.data.state == 0) {
+                  this.$store.commit('setOrg', {org : org.data.data});
+                } else {
+                  console.log("org失败")
+                  //当前用户没有权限
+                }
+              })
+            },5000)
+
           } else {
             //失败提示
           }
@@ -69,6 +70,9 @@
 
 
         //查询org
+
+      },
+      sOrg() {
 
       }
     }
