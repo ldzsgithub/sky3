@@ -1,12 +1,11 @@
 <template>
   <div id="real-time-list">
-    <!--    <p>{{deptId}}</p>-->
-    <!--    <p>{{hostId}}</p>-->
-    <!--    <p>{{items}}</p>-->
     <div v-for="dept in this.$store.state.org.depts">
       <div v-if="deptId === 0 || dept.departmentId === deptId" v-for="host in dept.hosts" class="realTimeList">
         <div v-if="hostId === 0 || host.hostId === hostId" v-for="probe in host.probes" class="item">
-          <img v-if="ss(probe)" src="~assets/img/alarm/no_alarm.png" alt="">
+          <img v-if="imgChoose(probe) === 0" src="~assets/img/alarm/no_alarm.png" alt="">
+          <img v-if="imgChoose(probe) === 1" src="~assets/img/alarm/low_alarm.png" alt="">
+          <img v-if="imgChoose(probe) === 2" src="~assets/img/alarm/high_alarm.png" alt="">
           <p> {{probe.probeName | ellipsis}} </p>
           <p> {{probe.realtimeValue | ellipsis}} </p>
         </div>
@@ -21,9 +20,24 @@
     name: 'RealTimeList',
     props: ['deptId', 'hostId'],
     methods: {
-      ss(probe) {
-        // probe.realtimeValue
-        return probe.realtimeValue>0;
+      imgChoose(probe) {
+        if(probe.probeType === 1) {
+          if(probe.realtimeValue < probe.lowValue) {
+            return 1;
+          } else if(probe.realtimeValue > probe.highValue) {
+            return 2;
+          } else {
+            return 0;
+          }
+        } else {
+          if(probe.realtimeValue > probe.highValue) {
+            return 2;
+          } else if (probe.realtimeValue > probe.lowValue) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
       }
     },
     filters: {

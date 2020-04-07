@@ -51,7 +51,4 @@
   };
 </script>
 <style scoped>
-  van-dropdown-menu {
-    background-color: #99ee8e;
-  }
 </style>

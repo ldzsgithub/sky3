@@ -1,23 +1,17 @@
 <template>
   <div class="history">
     <van-dropdown-menu>
-      <van-dropdown-item v-model="dept" :options="deptOption" />
-      <van-dropdown-item v-model="host" :options="hostOption" />
-      <van-dropdown-item v-model="probe" :options="probeOption" />
+      <van-dropdown-item v-model="dept" :options="deptOption"/>
+      <van-dropdown-item v-model="host" :options="hostOption"/>
+      <van-dropdown-item v-model="probe" :options="probeOption"/>
     </van-dropdown-menu>
-    <van-cell @click="pickTime">选择时间</van-cell>
-    <van-field
-      v-model="startTime"
-      placeholder="选择时间" readonly="readonly"
-      @click="startTimePop = true"
-    />
-    <van-popup position="bottom">
+    <van-cell is-link @click="showPopup">选择时间<b>{{currentDate | dateFormat}}</b></van-cell>
+    <van-popup v-model="show" position="bottom" :style="{ height: '40%' }">
       <van-datetime-picker
-        v-model="startTimePop"
-        type="datetime"
-        @cancel="startTimePop = false"
-        @confirm="startTimePop = false"
-        @change="startTime"
+        v-model="currentDate"
+        type="date"
+        :min-date="minDate"
+        :max-date="maxDate"
       />
     </van-popup>
   </div>
@@ -29,35 +23,45 @@
     name: 'History',
     data() {
       return {
-        startTime: 0,
-        endTime: 0,
-        startTimePop: false,
+        minDate: new Date(2019, 1, 1),
+        maxDate: new Date(),
+        currentDate: new Date(),
+        show: false,
         dept: 0,
         host: 0,
         probe: 0,
         deptOption: [
           { text: '全部', value: 0 },
-          { text: '炼钢厂', value: 1 },
         ],
         hostOption: [
           { text: '全部', value: 0 },
-          { text: '主机一', value: 1 },
-          { text: '主机二', value: 2 },
         ],
         probeOption: [
           { text: '全部', value: 0 },
-          { text: '探头一', value: 1 },
-          { text: '探头二', value: 2 }
         ]
       };
     },
     methods: {
-      pickTime() {
+      showPopup() {
         this.show = true;
+      }
+    },
+    filters: {
+      dateFormat: function (value) {
+        let date = new Date(value);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        return y + '-' + MM + '-' + d;
       }
     }
   }
 </script>
 
 <style>
+  b {
+    margin-left: 40%;
+  }
 </style>
