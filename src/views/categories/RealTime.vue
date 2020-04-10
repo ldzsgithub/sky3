@@ -42,7 +42,6 @@
         let checkDept = this.$store.state.org.depts.find(checkDept => {
           return checkDept.departmentId === this.dept
         })
-
         for(let h of checkDept.hosts) {
           this.hostOption.push({text: h.hostName, value: h.hostId});
         }

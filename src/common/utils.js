@@ -18,6 +18,10 @@ export function formatDate(date, fmt) {
   return fmt;
 };
 
+function padLeftZero (str) {
+  return ('00' + str).substr(str.length);
+};
+
 export function charToUnicode(str) {
     let temp;
     let i = 0;

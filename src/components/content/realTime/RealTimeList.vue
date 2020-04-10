@@ -7,7 +7,7 @@
           <img v-if="imgChoose(probe) === 1" src="~assets/img/alarm/low_alarm.png" alt="">
           <img v-if="imgChoose(probe) === 2" src="~assets/img/alarm/high_alarm.png" alt="">
           <p> {{probe.probeName | ellipsis}} </p>
-          <p> {{probe.realtimeValue | ellipsis}} </p>
+          <p> {{probe.realtimeValue}} </p>
         </div>
       </div>
     </div>

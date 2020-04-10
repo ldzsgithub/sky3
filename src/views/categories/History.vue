@@ -1,8 +1,8 @@
 <template>
   <div class="history">
     <van-dropdown-menu>
-      <van-dropdown-item v-model="dept" :options="deptOption"/>
-      <van-dropdown-item v-model="host" :options="hostOption"/>
+      <van-dropdown-item v-model="dept" :options="deptOption" @change="setHostOption()"/>
+      <van-dropdown-item v-model="host" :options="hostOption" @change="setProbeOption()"/>
       <van-dropdown-item v-model="probe" :options="probeOption"/>
     </van-dropdown-menu>
     <van-cell is-link @click="showPopup">选择时间<b>{{currentDate | dateFormat}}</b></van-cell>
@@ -14,10 +14,13 @@
         :max-date="maxDate"
       />
     </van-popup>
+    <button @click="select()">查询</button>
   </div>
 </template>
 
 <script>
+  import {formatDate} from "../../common/utils";
+  import {selectHistoryByProbeId} from "../../network/categories/history";
 
   export default {
     name: 'History',
@@ -41,9 +44,54 @@
         ]
       };
     },
+    mounted() {
+      this.setOption();
+    },
     methods: {
+      setOption() {
+        for(let d of this.$store.state.org.depts) {
+          if(d.hosts.length > 0) {
+            this.deptOption.push({text: d.departmentName, value: d.departmentId});
+          }
+        }
+      },
+      setHostOption() {
+        this.host = 0;
+        this.hostOption = [{text: '全部', value: 0}];
+        if(this.dept === 0) return false;
+        let checkDept = this.$store.state.org.depts.find(c => {
+          return c.departmentId === this.dept
+        })
+        for(let h of checkDept.hosts) {
+          this.hostOption.push({text: h.hostName, value: h.hostId});
+        }
+      },
+      setProbeOption() {
+        this.probe = 0;
+        this.probeOption = [{text: '全部', value: 0}];
+        if(this.host === 0) return false;
+        for(let dept of this.$store.state.org.depts) {
+          if(dept.departmentId === this.dept) {
+            for(let host of dept.hosts) {
+              if(host.hostId === this.host) {
+                for(let probe of host.probes) {
+                  this.probeOption.push({text: probe.probeName, value: probe.probeId});
+                }
+              }
+            }
+          }
+        }
+      },
       showPopup() {
         this.show = true;
+      },
+      select() {
+        console.log(this.probe)
+        selectHistoryByProbeId(this.probe, formatDate(this.currentDate,'yyyyMMdd')).then(res => {
+          console.log(res.data.data)
+        }).catch(err => {
+
+        })
       }
     },
     filters: {
