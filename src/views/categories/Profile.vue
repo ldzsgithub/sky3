@@ -2,8 +2,6 @@
   <div class="home">
     <div class="header">
       <div class="wrapper">
-        <b>{{$store.state.user}}</b>
-        <b>{{$store.state.user}}</b>
       </div>
     </div>
     <div class="content">

@@ -15,20 +15,31 @@
       />
     </van-popup>
     <button @click="select()">查询</button>
+    <van-switch v-model="checked" />
+    <div v-if="!checked" v-for="d in data">
+      <div style="color: red">{{d.date}}<b>{{d.value}}</b></div>
+    </div>
+    <div v-if="checked">
+      <HistoryLine :probe-id="probe" :date="currentDate"></HistoryLine>
+    </div>
   </div>
 </template>
 
 <script>
   import {formatDate} from "../../common/utils";
   import {selectHistoryByProbeId} from "../../network/categories/history";
+  import HistoryLine from "../../components/content/echarts/HistoryLine";
 
   export default {
     name: 'History',
+    components: {
+      HistoryLine
+    },
     data() {
       return {
         minDate: new Date(2019, 1, 1),
         maxDate: new Date(),
-        currentDate: new Date(),
+        currentDate: new Date(2019, 9, 12),
         show: false,
         dept: 0,
         host: 0,
@@ -41,7 +52,9 @@
         ],
         probeOption: [
           { text: '全部', value: 0 },
-        ]
+        ],
+        checked: true,
+        data: []
       };
     },
     mounted() {
@@ -58,6 +71,8 @@
       setHostOption() {
         this.host = 0;
         this.hostOption = [{text: '全部', value: 0}];
+        this.probe = 0;
+        this.probeOption = [{text: '全部', value: 0}];
         if(this.dept === 0) return false;
         let checkDept = this.$store.state.org.depts.find(c => {
           return c.departmentId === this.dept
@@ -86,8 +101,13 @@
         this.show = true;
       },
       select() {
-        console.log(this.probe)
+        this.data = [];
         selectHistoryByProbeId(this.probe, formatDate(this.currentDate,'yyyyMMdd')).then(res => {
+          if(res.data.state === 0) {
+            for(let d of res.data.data) {
+              this.data.push(d);
+            }
+          }
           console.log(res.data.data)
         }).catch(err => {
 
@@ -108,8 +128,12 @@
   }
 </script>
 
-<style>
+<style scoped>
   b {
     margin-left: 40%;
+  }
+  .history {
+    overflow: hidden;
+    margin-bottom: 49px;
   }
 </style>

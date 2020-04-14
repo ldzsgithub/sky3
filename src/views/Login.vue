@@ -41,7 +41,7 @@
     name: "login",
     data() {
       return {
-        username: '兰大中',
+        username: '1',
         password: '1'
       }
     },
@@ -56,9 +56,9 @@
             clearInterval();
             setInterval( () => {
               this.sOrg();
-            },5000)
+            },1000)
           } else {
-            //失败提示
+            this.$toast.fail(res.data.msg);
           }
         })
       },

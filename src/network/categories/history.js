@@ -9,3 +9,13 @@ export function selectHistoryByProbeId(probeId, date) {
     }
   })
 }
+
+export function selectHistoryByProbeIdLine(probeId, date) {
+  return request({
+    url: "/alarm/selectHistoryByProbeIdLine",
+    params: {
+      probeId: probeId,
+      date: date
+    }
+  })
+}
