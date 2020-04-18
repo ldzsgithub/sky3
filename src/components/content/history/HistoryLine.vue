@@ -40,21 +40,26 @@
       select() {
         selectHistoryByProbeIdLine(this.probeId, formatDate(this.date,'yyyyMMdd')).then(res => {
           if(res.data.state === 0) {
-            this.lineDate.series[0].data = [res.data.data[0], res.data.data[3], res.data.data[7],
-              res.data.data[11], res.data.data[15], res.data.data[19], res.data.data[23],]
+            this.lineDate.series[0].data =
+              [res.data.data[0],
+              res.data.data[3],
+              res.data.data[7],
+              res.data.data[11],
+              res.data.data[15],
+              res.data.data[19],
+              res.data.data[23]]
           }
-          console.log(this.lineDate.series[0].data)
         }).catch(err => {
 
         })
       }
-
     }
   };
 </script>
 
-<style>
+<style scoped>
   .line-chart {
     width: 100vw;
+    height: 75vh;
   }
 </style>
