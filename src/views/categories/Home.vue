@@ -1,17 +1,15 @@
 <template>
   <div class="home">
-    首页
+    <Weather></Weather>
   </div>
 </template>
 
 <script>
+  import Weather from "../../components/content/home/Weather";
   export default {
     name: "Home",
     components: {
-    },
-    data() {
-      return {
-      };
+      Weather
     }
   };
 </script>
