@@ -16,5 +16,6 @@
   iframe {
     width: 100vw;
     height: calc(100vh - 49px);
+    pointer-events: none;
   }
 </style>
