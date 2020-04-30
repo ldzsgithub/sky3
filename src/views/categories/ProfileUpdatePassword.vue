@@ -1,7 +1,7 @@
 <template>
   <div id="updatePassword">
-    1问请问
-    <router-link to="/categories/profile">返回</router-link>
+    开发中
+    <router-link class="ss" to="/categories/profile">返回</router-link>
   </div>
 </template>
 
@@ -16,5 +16,8 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .ss {
+    color: red;
+  }
 </style>

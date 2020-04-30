@@ -2,12 +2,21 @@
   <div id="real-time-list">
     <div v-for="dept in this.$store.state.org.depts">
       <div v-if="deptId === 0 || dept.departmentId === deptId" v-for="host in dept.hosts" class="realTimeList">
-        <div v-if="hostId === 0 || host.hostId === hostId" v-for="probe in host.probes" class="item">
-          <img v-if="imgChoose(probe) === 0" src="~assets/img/alarm/no_alarm.png" alt="">
-          <img v-if="imgChoose(probe) === 1" src="~assets/img/alarm/low_alarm.png" alt="">
-          <img v-if="imgChoose(probe) === 2" src="~assets/img/alarm/high_alarm.png" alt="">
-          <p> {{probe.probeName | ellipsis}} </p>
-          <p> {{probe.realtimeValue}} </p>
+        <div v-if="hostId === 0 || host.hostId === hostId" v-for="probe in host.probes"
+             :class="onlyWarn && imgChoose(probe) !== 0 || !onlyWarn?'item':''">
+          <div v-if="onlyWarn && imgChoose(probe) !== 0">
+            <img v-if="imgChoose(probe) === 1" src="~assets/img/alarm/low_alarm.png" alt="">
+            <img v-if="imgChoose(probe) === 2" src="~assets/img/alarm/high_alarm.png" alt="">
+            <p> {{probe.probeName | ellipsis}} </p>
+            <p> {{probe.realtimeValue}} </p>
+          </div>
+          <div v-if="!onlyWarn">
+            <img v-if="imgChoose(probe) === 0" src="~assets/img/alarm/no_alarm.png" alt="">
+            <img v-if="imgChoose(probe) === 1" src="~assets/img/alarm/low_alarm.png" alt="">
+            <img v-if="imgChoose(probe) === 2" src="~assets/img/alarm/high_alarm.png" alt="">
+            <p> {{probe.probeName | ellipsis}} </p>
+            <p> {{probe.realtimeValue}} </p>
+          </div>
         </div>
       </div>
     </div>
@@ -18,7 +27,7 @@
 
   export default {
     name: 'RealTimeList',
-    props: ['deptId', 'hostId'],
+    props: ['deptId', 'hostId', 'onlyWarn'],
     methods: {
       imgChoose(probe) {
         if(probe.probeType === 1) {
@@ -71,7 +80,7 @@
   .item {
     border-right: var(--border-color) 1px solid;
     border-bottom:  var(--border-color) 1px solid;
-    text-align: center;
-    flex-basis: calc(100% / 3);
+    width: calc(100% / 3);
+    flex-basis: auto;
   }
 </style>

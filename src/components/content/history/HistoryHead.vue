@@ -5,10 +5,21 @@
       <van-dropdown-item v-model="host" :options="hostOption" @change="setProbeOption()"/>
       <van-dropdown-item v-model="probe" :options="probeOption"/>
     </van-dropdown-menu>
+
+<!--    <van-dropdown-menu>-->
+<!--      <van-dropdown-item title="选择时间">-->
+<!--        <van-cell is-link @click="showPopup">选择时间<b>{{currentDate | dateFormat}}</b></van-cell>-->
+<!--      </van-dropdown-item>-->
+<!--      <van-dropdown-item title="筛选">-->
+<!--        <van-switch-cell v-model="onlyWarn" title="仅显示报警" />-->
+<!--      </van-dropdown-item>-->
+<!--    </van-dropdown-menu>-->
     <div style="width: 70%"><van-cell is-link @click="showPopup">选择时间<b>{{currentDate | dateFormat}}</b></van-cell></div>
 
     <van-popup v-model="show" position="bottom" :style="{ height: '40%' }">
       <van-datetime-picker
+        confirm-button-text=" "
+        cancel-button-text=" "
         v-model="currentDate"
         type="date"
         :min-date="minDate"

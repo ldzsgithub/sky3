@@ -1,7 +1,8 @@
 <template>
   <div class="history">
     <HistoryHead v-on:getParam="getParam"></HistoryHead>
-    <div class="switch">切换<van-switch v-model="checked"/></div>
+
+    <div class="switch"><small>切换</small><van-switch class="sd" v-model="checked"/></div>
     <div v-if="begin && checked">
       <HistoryLine ref="line" :probe-id="probeId" :date="date"></HistoryLine>
     </div>
@@ -58,14 +59,8 @@
     margin-bottom: 49px;
   }
   .switch {
-    height: 32px;
-    width: 30%;
     position: absolute;
     right: 0px;
-    top: 56px;
-    line-height: 32px;
-  }
-  .switch b {
-
+    top: 50px;
   }
 </style>
