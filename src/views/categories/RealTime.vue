@@ -1,13 +1,14 @@
 <template>
   <div class="RealTime">
-    <van-dropdown-menu class="a">
+    <van-dropdown-menu>
       <van-dropdown-item v-model="dept" :options="deptOption" @change="setHostOption()"/>
       <van-dropdown-item v-model="host" :options="hostOption"/>
       <van-dropdown-item title="筛选">
         <van-switch-cell v-model="onlyWarn" title="仅显示报警" />
+        <van-switch-cell v-model="showModel" title="切换显示方式" />
       </van-dropdown-item>
     </van-dropdown-menu>
-    <real-time-list :dept-id="dept" :host-id="host" :only-warn="onlyWarn"></real-time-list>
+    <real-time-list :show-model="showModel" :dept-id="dept" :host-id="host" :only-warn="onlyWarn"></real-time-list>
   </div>
 </template>
 
@@ -25,7 +26,8 @@
         host: 0,
         deptOption: [{text: '全部', value: 0}],
         hostOption: [{text: '全部', value: 0}],
-        onlyWarn: false
+        onlyWarn: false,
+        showModel: true
       }
     },
     mounted() {

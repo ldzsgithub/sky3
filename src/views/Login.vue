@@ -56,7 +56,7 @@
             clearInterval();
             setInterval( () => {
               this.sOrg();
-            },1000)
+            },5000)
           } else {
             this.$toast.fail(res.data.msg);
           }

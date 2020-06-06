@@ -5,11 +5,10 @@
   <title>Title</title>
 </head>
 <body>
-  <div>
+  <div class="wrap">
+    <div class="con">
 
-    <b>asd</b>
-    <x></x>
-
+    </div>
   </div>
 </body>
 <style>
@@ -17,24 +16,23 @@
     margin: 0;
   }
 
-  div {
+  .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 200px;
+    width: 200px;
+    border: 1px solid #333333;
+  }
+
+  .con {
     height: 200px;
     width: 200px;
     background-color: #FF9900;
-    line-height: 100px;
   }
-
-  b {
-  }
-  x:before {
-    content: '';
-    display: inline-block;
-  }
-  x {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    background-color: red;
+  .wrap:hover {
+    cursor: move;
   }
 </style>
 </html>
